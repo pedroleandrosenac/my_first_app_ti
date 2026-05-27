@@ -10,10 +10,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: .fromSeed(seedColor: Colors.red),
-      ),
+      title: 'App do Pedro',
+      theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.red)),
       home: const MyHomePage(title: 'Minha aplicação em Flutter'),
     );
   }
@@ -37,6 +35,18 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void _decrementCounter() {
+    setState(() {
+      _counter--;
+    });
+  }
+
+  void _resetCounter() {
+    setState(() {
+      _counter = 0;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: .center,
           children: [
-            const Text('You have pushed the button this many times:'),
+            const Text('Você apertou essa quantidade de vezes no botão:'),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
@@ -56,10 +66,34 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          if (_counter != 0) ...[
+
+            FloatingActionButton(
+              onPressed: _resetCounter,
+              tooltip: 'resetar',
+              child: const Icon(Icons.refresh),
+            ),
+
+            const SizedBox(width: 10),
+
+            FloatingActionButton(
+              onPressed: _decrementCounter,
+              tooltip: 'decremento',
+              child: const Icon(Icons.remove),
+            ),
+          ],
+
+          const SizedBox(width: 10),
+
+          FloatingActionButton(
+            onPressed: _incrementCounter,
+            tooltip: 'incremento',
+            child: const Icon(Icons.add),
+          ),
+        ],
       ),
     );
   }
