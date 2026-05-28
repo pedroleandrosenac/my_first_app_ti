@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'models/candidate.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,25 +28,20 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
+  List<Candidate> candidates = Candidate.candidates();
+
+  @override
+  void initState(){
+    super.initState();
+
+    for(var candidate in candidates){
+      print(candidate.name);
+      print(candidate.email);
+      print("---");
+    }
   }
 
-  void _decrementCounter() {
-    setState(() {
-      _counter--;
-    });
-  }
-
-  void _resetCounter() {
-    setState(() {
-      _counter = 0;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,46 +50,34 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: .center,
-          children: [
-            const Text('Você apertou essa quantidade de vezes no botão:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+      body: ListView.builder(
+        itemCount: candidates.length,
+        itemBuilder: (context, index) {
+          final candidate = candidates[index];
+
+          return Card(
+
+            margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+
+            child: ListTile(
+
+              leading: CircleAvatar(
+                child: Text(candidate.name[0]),
+              ),
+
+              title: Text(candidate.name),
+
+              subtitle: Text(candidate.email),
+
+              trailing: Icon(
+                candidate.available ? Icons.check_circle : Icons.cancel_rounded,
+                color: candidate.available ? Colors.green : Colors.red,
+              ),
+
             ),
-          ],
-        ),
-      ),
-      floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          if (_counter != 0) ...[
 
-            FloatingActionButton(
-              onPressed: _resetCounter,
-              tooltip: 'resetar',
-              child: const Icon(Icons.refresh),
-            ),
-
-            const SizedBox(width: 10),
-
-            FloatingActionButton(
-              onPressed: _decrementCounter,
-              tooltip: 'decremento',
-              child: const Icon(Icons.remove),
-            ),
-          ],
-
-          const SizedBox(width: 10),
-
-          FloatingActionButton(
-            onPressed: _incrementCounter,
-            tooltip: 'incremento',
-            child: const Icon(Icons.add),
-          ),
-        ],
+          );
+        },
       ),
     );
   }
