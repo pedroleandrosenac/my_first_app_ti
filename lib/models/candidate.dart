@@ -6,6 +6,7 @@ class Candidate {
   String course;
   int graduationYear;
   bool available;
+  List<String> technicalSkills;
 
   //construtor
   Candidate({
@@ -15,6 +16,7 @@ class Candidate {
     required this.course,
     required this.graduationYear,
     required this.available,
+    required this.technicalSkills,
   });
 
   static List<Candidate> candidates() {
@@ -26,6 +28,7 @@ class Candidate {
         course: "Técnico Em Informática para Internet",
         graduationYear: 2026,
         available: true,
+        technicalSkills: ["HTML", "CSS", "Javascript", "PHP", "IA"],
       ),
 
       Candidate(
@@ -35,6 +38,19 @@ class Candidate {
         course: "Técnico Em Informática para Internet",
         graduationYear: 2026,
         available: true,
+        technicalSkills: [
+          "HTML",
+          "TAILWINDCSS",
+          "JAVASCRIPT",
+          "TYPESCRIPT",
+          "PHP",
+          "REACT",
+          "NEXT.JS",
+          "NODE.JS",
+          "MYSQL",
+          "MONGODB",
+          "DEPLOY",
+        ],
       ),
 
       Candidate(
@@ -44,6 +60,7 @@ class Candidate {
         course: "Tec. em inf para internet",
         graduationYear: 2026,
         available: false,
+        technicalSkills: ["HTML", "CSS", "JavaScript", "Java", "PHP", "IA"],
       ),
 
       Candidate(
@@ -53,15 +70,32 @@ class Candidate {
         course: "Tecnico em Informatica para Internet",
         graduationYear: 2026,
         available: false,
+        technicalSkills: [
+          "PHP",
+          "HTML",
+          "CSS",
+          "Javascript",
+          "Flutter",
+          "Dart",
+        ],
       ),
 
       Candidate(
-        name: "Elcio Reis",
+        name: "Nayra",
         document: "1234567890",
-        email: "elciof739@gmail.com",
+        email: "nayra.conceicao@gmail.com",
         course: "Técnico em Informática para internet",
         available: true,
         graduationYear: 2026,
+        technicalSkills: [
+          "HTML",
+          "CSS",
+          "Javascript",
+          "PHP",
+          "IA",
+          "Informática básica",
+          "Recepção",
+        ],
       ),
 
       Candidate(
@@ -71,6 +105,7 @@ class Candidate {
         course: "Técnico em Informática para Internet",
         graduationYear: 2026,
         available: true,
+        technicalSkills: ["HTML", "CSS", "JAVASCRIPT", "PHP"],
       ),
 
       Candidate(
@@ -80,6 +115,7 @@ class Candidate {
         course: "Técnico em Informática para Internet",
         graduationYear: 2026,
         available: false,
+        technicalSkills: ["HTML", "CSS", "Javascript", "Recursos Humanos"],
       ),
     ];
   }
